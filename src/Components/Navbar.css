@@ -1,0 +1,46 @@
+.nav {
+    color: var(--gray);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav__links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.nav__links a:visited {
+    color: var(--gray);
+}
+
+.nav__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.nav__buttons {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+.nav__signin {
+    color: white;
+    border: 1px solid var(--cyan);
+    border-radius: 999em;
+    padding: 5px 20px;
+    background-color: var(--cyan);
+}

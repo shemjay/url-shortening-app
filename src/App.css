@@ -1,0 +1,29 @@
+:root {
+  /* Primary Colors */
+  --cyan: hsl(180, 66%, 49%);
+  --dark-violet: hsl(257, 27%, 26%);
+
+  /* Secondary Colors */
+  --red: hsl(0, 87%, 67%);
+
+  /* Neutral Colors */
+  --gray: hsl(0, 0%, 75%);
+  --grayish-violet: hsl(257, 7%, 63%);
+  --very-dark-blue: hsl(255, 11%, 22%);
+  --very-dark-violet: hsl(260, 8%, 14%);
+
+  /* Typography */
+  --body-font-size: 18px;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", serif;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--body-font-size);
+  height: 100vh;
+  max-width: 100%;
+}
