@@ -37,10 +37,4 @@
     color: var(--gray);
 }
 
-.nav__signin {
-    color: white;
-    border: 1px solid var(--cyan);
-    border-radius: 999em;
-    padding: 5px 20px;
-    background-color: var(--cyan);
-}
+

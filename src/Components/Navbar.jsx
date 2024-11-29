@@ -1,6 +1,7 @@
 import React from 'react'
 import './Navbar.css'
 import Logo from './Assets/Images/logo.svg'
+import Button from './Button'
 
 const Navbar = () => {
   return (
@@ -19,7 +20,7 @@ const Navbar = () => {
 
         <div className='nav__buttons'>
             <button className='nav__buttons nav__login'>Login</button>
-            <button className='nav__buttons nav__signin'>Sign Up</button>
+            <Button />
         </div>
         
     </nav>
