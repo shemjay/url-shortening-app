@@ -1,5 +1,5 @@
 .nav {
-    color: var(--gray);
+    color: var(--grayish-violet);
     font-weight: var(--font-weight-medium);
     display: flex;
     align-items: center;
@@ -8,7 +8,7 @@
 
 .nav__container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 

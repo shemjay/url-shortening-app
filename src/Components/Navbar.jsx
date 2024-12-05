@@ -20,7 +20,7 @@ const Navbar = () => {
 
         <div className='nav__buttons'>
             <button className='nav__buttons nav__login'>Login</button>
-            <Button />
+            <Button text="Sign Up" />
         </div>
         
     </nav>

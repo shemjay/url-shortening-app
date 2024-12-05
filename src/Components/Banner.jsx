@@ -9,7 +9,7 @@ const Banner = () => {
       <div className='banner__content'>
         <h1>More than just shorten links</h1>
         <p>Build your brand recognition and get detailed insights on how your links are performing</p>
-        <Button />
+        <Button text="Get Started"/>
       </div>
 
       <div className='banner__image'>

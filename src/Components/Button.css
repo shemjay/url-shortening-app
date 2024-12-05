@@ -1,11 +1,15 @@
 .button__signin {
-    width: auto;
-    display: inline-block;
     background: none;
     cursor: pointer;
     color: white;
+    font-weight: var(--font-weight-bold);
     border: 1px solid var(--cyan);
     border-radius: 999em;
     padding: 5px 20px;
     background-color: var(--cyan);
+}
+
+.button__signin.secondary {
+    border-radius: 0.5em;
+    padding: 18px 20px;
 }

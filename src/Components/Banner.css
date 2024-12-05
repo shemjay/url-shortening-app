@@ -2,33 +2,46 @@
     display: flex;
     align-items: center;
     justify-content: left;  
-}
-
-.banner__image {
-    position: absolute;
-    right: -10%; 
-    top: 60%; 
-    transform: translateY(-50%);
-    z-index: 9;
-    max-width: 600px;
+    border: 2px solid blue;
+    position: relative;
+    overflow: hidden;
 }
 
 .banner__content {
-    max-width: 45rem;
-    margin-top: 5.5rem;
+    max-width: 50%;
+    z-index: 2;
     display: flex;
     align-items: left;
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
+    border: 2px solid red;
+}
+
+.banner__image {
+    position: absolute; /* Allows the image to break out of the container's normal flow */
+    right: -10%; /* Aligns the image to the right of the viewport */
+    top: 50%; /* Centers the image vertically relative to the container */
+    transform: translateY(-50%); /* Adjusts for vertical centering */
+    border: 2px solid black;   
+}
+
+.banner__image img {
+    height: auto; /* Maintains the image aspect ratio */
+    object-fit: cover;
+}
+
+.banner__content button {
+    align-self: flex-start; 
+    width: auto;
 }
 
 .banner__content h1 {
     font-size: 4rem;
+    line-height: 1.2;
 }
 
 .banner__content p {
-    color: var(--gray);
+    color: var(--grayish-violet);
 }
 
 /* Go through the css and js carefully needs to be refactored but the image is fine */
