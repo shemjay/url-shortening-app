@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Banner from './Components/Banner'
 import Shortener from './Components/Shortener'
+import Statistics from './Components/Statistics'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <Banner />
       <Shortener />
+      <Statistics />
     </>
   )
 }

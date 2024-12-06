@@ -13,3 +13,7 @@
     border-radius: 0.5em;
     padding: 18px 20px;
 }
+
+.button__signin.tertiary {
+    padding: 0.5em 1.5em;
+}

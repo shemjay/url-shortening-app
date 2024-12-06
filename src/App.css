@@ -26,6 +26,5 @@ body, html {
   font-size: var(--body-font-size);
   height: 100vh;
   max-width: 100%;
-  padding: 30px 40px;
-  overflow-x: hidden;
+  padding: 1.67em 2.22em;
 }

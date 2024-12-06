@@ -4,29 +4,32 @@
     justify-content: left;  
     border: 2px solid blue;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .banner__content {
-    max-width: 50%;
+    width: 100%;
     z-index: 2;
     display: flex;
     align-items: left;
     justify-content: center;
     flex-direction: column;
     border: 2px solid red;
+    padding: 5em 0;
 }
 
 .banner__image {
-    position: absolute; /* Allows the image to break out of the container's normal flow */
-    right: -10%; /* Aligns the image to the right of the viewport */
-    top: 50%; /* Centers the image vertically relative to the container */
-    transform: translateY(-50%); /* Adjusts for vertical centering */
+    max-width: 40rem;
+    position: absolute;
+    top: 50%; 
+    right: 0%;  
+    transform: translateY(-50%);
+    z-index: -1;
     border: 2px solid black;   
 }
 
 .banner__image img {
-    height: auto; /* Maintains the image aspect ratio */
+    height: auto; 
     object-fit: cover;
 }
 
@@ -42,7 +45,7 @@
 
 .banner__content p {
     color: var(--grayish-violet);
+    padding: 1em 0;
 }
 
-/* Go through the css and js carefully needs to be refactored but the image is fine */
 
