@@ -1,0 +1,31 @@
+.footer {
+    background-color: var(--dark-violet);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; 
+    gap: 2rem; 
+    padding: 3rem;
+    color: white;
+}
+
+.footer__logo {
+    display: flex;
+    align-self: flex-start;
+}
+
+.footer__links {
+    align-self: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: var(--gray);
+}
+
+.footer__links-card a:visited {
+    color: var(--gray);
+}
+
+.footer__socials {
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 1em;
+}
