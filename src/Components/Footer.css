@@ -1,9 +1,9 @@
 .footer {
-    background-color: var(--dark-violet);
+    background-color: var(--very-dark-violet);
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; 
-    gap: 2rem; 
-    padding: 3rem;
+     
+    padding: 4em 3em;
     color: white;
 }
 
@@ -16,7 +16,21 @@
     align-self: flex-start;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    color: var(--gray);
+    color: var(--violet-gray);
+}
+
+.empty-row {
+    grid-column: span 2; 
+    height: 1em;
+}
+
+.footer__links-card li {
+    padding: 0.3em 0;
+}
+
+.footer__links-card p {
+    font-weight: var(--font-weight-bold);
+    color: white;
 }
 
 .footer__links-card a:visited {
@@ -26,6 +40,6 @@
 .footer__socials {
     display: flex;
     align-self: flex-start;
-    align-items: center;
-    gap: 1em;
+    justify-content: right;
+    gap: 1.5em;
 }

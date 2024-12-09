@@ -10,8 +10,10 @@ import Footer from './Components/Footer'
 function App() {
   return (
     <>
-      <Navbar />
-      <Banner />
+      <div className='app__container'>
+        <Navbar />
+        <Banner />
+      </div>
       <Shortener />
       <Statistics />
       <Boost />

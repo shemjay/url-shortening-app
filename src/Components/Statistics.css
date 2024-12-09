@@ -5,6 +5,7 @@
     justify-content: space-between;
     margin: 0 auto;
     overflow: hidden;
+    padding: 4em 3em;
 }
 
 .statistics__title {
@@ -51,11 +52,11 @@
 }
 
 .card-2 {
-    transform: translateY(1.5em); 
+    transform: translateY(1em); 
 }
 
 .card-3 {
-    transform: translateY(3em); 
+    transform: translateY(2.5em); 
 }
 
 .statistics__card h3 {

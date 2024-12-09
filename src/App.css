@@ -26,5 +26,11 @@ body, html {
   font-size: var(--body-font-size);
   height: 100vh;
   max-width: 100%;
-  padding: 1.67em 2.22em;
+  background-color: var(--gray);
+}
+
+.app__container {
+  background-color: white;
+  padding: 4em 3em;
+  overflow: hidden;
 }

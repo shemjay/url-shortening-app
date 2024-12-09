@@ -1,6 +1,6 @@
 .nav {
     color: var(--grayish-violet);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-bold);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,7 +25,7 @@
 
 .nav__buttons {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
 }

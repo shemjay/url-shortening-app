@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className='footer'>
       <div className='footer__logo'>
-        <img src={Logo} alt="logo" />
+        <a href="#"><img src={Logo} alt="logo" className='footer__icon' /></a>
       </div>
 
       <div className='footer__links'>
@@ -18,6 +18,7 @@ const Footer = () => {
         <div className='footer__links-card'>
             <ul>
                 <p>Features</p>
+                <li className='empty-row'></li>
                 <li><a href='#'>Link Shortening</a></li>
                 <li><a href='#'>Branded Links</a></li>
                 <li><a href='#'>Analytics</a></li>
@@ -27,6 +28,7 @@ const Footer = () => {
         <div className='footer__links-card'>
             <ul>
                 <p>Features</p>
+                <li className='empty-row'></li>
                 <li><a href='#'>Link Shortening</a></li>
                 <li><a href='#'>Branded Links</a></li>
                 <li><a href='#'>Analytics</a></li>
@@ -36,6 +38,7 @@ const Footer = () => {
         <div className='footer__links-card'>
             <ul>
                 <p>Features</p>
+                <li className='empty-row'></li>
                 <li><a href='#'>Link Shortening</a></li>
                 <li><a href='#'>Branded Links</a></li>
                 <li><a href='#'>Analytics</a></li>
