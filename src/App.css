@@ -31,6 +31,6 @@ body, html {
 
 .app__container {
   background-color: white;
-  padding: 4em 3em;
-  overflow: hidden;
+  padding: 4em 6em;
+  overflow-x: hidden;
 }

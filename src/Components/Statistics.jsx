@@ -3,10 +3,15 @@ import './Statistics.css'
 import Customizable from './Assets/Images/icon-fully-customizable.svg'
 import Brand from './Assets/Images/icon-brand-recognition.svg'
 import Records from './Assets/Images/icon-detailed-records.svg'
+import Shortener from '../Components/Shortener'
 
 const Statistics = () => {
   return (
     <div className='statistics__container'>
+        <div className='shortener'>
+            <Shortener />
+        </div>
+        
         <div className='statistics__title'>
             <h2>Advanced Statistics</h2>
             <p>Track how your links are performing across the web with<br/> our advanced statistics dashboard</p>
