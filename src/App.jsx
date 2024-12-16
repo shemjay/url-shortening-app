@@ -6,6 +6,8 @@ import Statistics from './Components/Statistics'
 import Boost from './Components/Boost'
 import Footer from './Components/Footer'
 
+// API TO USE: https://cleanuri.com/docs
+
 function App() {
   return (
     <>

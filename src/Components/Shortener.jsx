@@ -8,9 +8,55 @@ const Shortener = () => {
   const[shortenedURL, shortendedURL] = useState("")
   const[error, setError] = useState("")
 
+  //Handles user input change
   function handleInputChange(e) {
     setOriginalURL(e.target.value)
-    console.log(originalURL)
+  }
+
+  //API Call
+  const sendURLToAPI = async (encodedURL) => {
+    console.log("Sending to API:", encodedURL);
+    try {
+      const response = await fetch('https://api.allorigins.win/get?url=https://cleanuri.com/api/v1/shorten', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          url: encodedURL 
+        })
+      });
+  
+      if (!response.ok) {
+        const errorDetails = await response.json();
+        throw new Error("Unable to fetch data: " + errorDetails.error);
+      }
+  
+      const data = await response.json(); 
+      console.log("Link sent successfully!", data); 
+      return data;
+  
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  //form submission
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (originalURL !== "") {
+      try{
+        // const encodedURL = encodeURIComponent(originalURL)
+        const encodedURL = new URL(originalURL)
+        sendURLToAPI(encodedURL) 
+      } catch (error){
+        console.log("Invalid URL!")
+      }
+    } else {
+      console.log("Please enter a URL before submitting!")
+    }
+
   }
 
   return (
@@ -23,9 +69,9 @@ const Shortener = () => {
               placeholder="Shorten your link here..." 
               required
               value={originalURL} 
-              onChange={handleInputChange}
+              onChange={(e) => setOriginalURL(e.target.value)}
             />
-            <Button text="Shorten It!" variant="secondary"/>
+            <Button text="Shorten It!" variant="secondary" onClick={(e) => handleSubmit(e)}/>
         </div>
     </div>
   )
