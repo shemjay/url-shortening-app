@@ -5,58 +5,46 @@ import './Shortener.css'
 const Shortener = () => {
 
   const[originalURL, setOriginalURL] = useState("")
-  const[shortenedURL, shortendedURL] = useState("")
+  const[shortenedURL, setshortenedURL] = useState("")
   const[error, setError] = useState("")
 
   //Handles user input change
-  function handleInputChange(e) {
+  const handleInputChange = (e) => {
     setOriginalURL(e.target.value)
-  }
-
-  //API Call
-  const sendURLToAPI = async (encodedURL) => {
-    console.log("Sending to API:", encodedURL);
-    try {
-      const response = await fetch('https://api.allorigins.win/get?url=https://cleanuri.com/api/v1/shorten', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          url: encodedURL 
-        })
-      });
-  
-      if (!response.ok) {
-        const errorDetails = await response.json();
-        throw new Error("Unable to fetch data: " + errorDetails.error);
-      }
-  
-      const data = await response.json(); 
-      console.log("Link sent successfully!", data); 
-      return data;
-  
-    } catch (error) {
-      console.log(error);
-    }
   }
   
   //form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (originalURL !== "") {
+    if (originalURL.trim() !== "") {
       try{
-        // const encodedURL = encodeURIComponent(originalURL)
-        const encodedURL = new URL(originalURL)
-        sendURLToAPI(encodedURL) 
+        const encodedURL = encodeURIComponent(originalURL.trim());
+        
+        //Send to API
+        const response = await fetch('https://proxy.cors.sh/https://cleanuri.com/api/v1/shorten', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `url=${encodedURL}`, // URL-encoded data
+        });
+
+        if (!response.ok) {
+          const errorDetails = await response.json();
+          throw new Error('API Error: ' + errorDetails.error);
+        }
+  
+        // Log the successful response
+        const data = await response.json();
+        console.log('API Response:', data);
+
       } catch (error){
-        console.log("Invalid URL!")
+        console.log(error)
       }
     } else {
       console.log("Please enter a URL before submitting!")
     }
-
   }
 
   return (
@@ -69,9 +57,9 @@ const Shortener = () => {
               placeholder="Shorten your link here..." 
               required
               value={originalURL} 
-              onChange={(e) => setOriginalURL(e.target.value)}
+              onChange={handleInputChange}
             />
-            <Button text="Shorten It!" variant="secondary" onClick={(e) => handleSubmit(e)}/>
+            <Button text="Shorten It!" variant="secondary" onClick={handleSubmit}/>
         </div>
     </div>
   )
@@ -88,7 +76,7 @@ export default Shortener
 // Define a function to update the input state as the user types in the URL input field. DONE
 
 // Handle Form Submission
-// Create a function that gets triggered when the user submits the form.
+// Create a function that gets triggered when the user submits the form. DONE
 // Validate the input URL (e.g., check if it’s not empty or malformed).
 // Make an API call to a link-shortening service (e.g., Bitly, TinyURL) with the original URL.
 

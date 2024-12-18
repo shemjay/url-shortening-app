@@ -23,18 +23,17 @@
     color: var(--gray);
 }
 
+.nav__links a:hover {
+    color: var(--very-dark-violet);
+}
+
 .nav__buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-}
-
-.nav__buttons {
     background: none;
     border: none;
     cursor: pointer;
     color: var(--gray);
+    gap: 20px;
 }
-
-

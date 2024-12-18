@@ -19,6 +19,10 @@
     color: var(--violet-gray);
 }
 
+.footer__links li a:hover {
+    color: var(--cyan);
+}
+
 .empty-row {
     grid-column: span 2; 
     height: 1em;
@@ -42,4 +46,8 @@
     align-self: flex-start;
     justify-content: right;
     gap: 1.5em;
+}
+
+.footer__socials g:hover {
+    color: var(--cyan);
 }

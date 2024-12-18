@@ -7,6 +7,11 @@
     border-radius: 999em;
     padding: 5px 20px;
     background-color: var(--cyan);
+    transition: 0.3s;
+}
+
+.button__signin:hover {
+    background-color: hsl(180, 66%, 49%, 0.2);
 }
 
 .button__signin.secondary {
