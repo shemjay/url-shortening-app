@@ -6,7 +6,7 @@ import Statistics from './Components/Statistics'
 import Boost from './Components/Boost'
 import Footer from './Components/Footer'
 
-// API TO USE: https://cleanuri.com/docs
+// API TO USE: https://cleanuri.com/docs it sucks
 
 function App() {
   return (

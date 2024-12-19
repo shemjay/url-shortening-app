@@ -8,15 +8,31 @@
     background-repeat: no-repeat;
     background-color: var(--dark-violet);
     border-radius: 0.5em;
-    padding: 3em;
+    padding: 2.5em;
 }
 
 .shortener__content {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: space-between;
-    gap: 1em;
+    flex-direction: column;
     width: 100%;
+}
+
+.shortener__input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.shortener__input-error {
+    outline: 2px solid var(--red);
+}
+
+.shortener__input-error:focus {
+    outline: none;
+    outline: 2px solid var(--red);
 }
 
 input[type="url"] {
@@ -26,3 +42,20 @@ input[type="url"] {
     max-width: 100%;
     border-radius: 0.5em;
 }
+
+.shortener__text-error {
+    font-size: 0.75em;
+    color: var(--red);
+    font-style: italic;
+}
+
+.shortener__container-link {
+    background-color: white;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em;
+    min-width: 100%;
+}
+

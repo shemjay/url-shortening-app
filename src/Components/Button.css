@@ -11,7 +11,7 @@
 }
 
 .button__signin:hover {
-    background-color: hsl(180, 66%, 49%, 0.2);
+    background-color: hsl(180, 66%, 49%, 0.5);
 }
 
 .button__signin.secondary {

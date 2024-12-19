@@ -1,72 +1,123 @@
-import React, { useState } from 'react'
-import Button from './Button'
-import './Shortener.css'
+import React, { useState } from "react";
+import Button from "./Button";
+import "./Shortener.css";
 
 const Shortener = () => {
-
-  const[originalURL, setOriginalURL] = useState("")
-  const[shortenedURL, setshortenedURL] = useState("")
-  const[error, setError] = useState("")
+  const [originalURL, setOriginalURL] = useState("");
+  const [shortenedURLs, setshortenedURLs] = useState([]);
+  const [error, setError] = useState("");
 
   //Handles user input change
   const handleInputChange = (e) => {
-    setOriginalURL(e.target.value)
-  }
-  
+    setOriginalURL(e.target.value);
+  };
+
   //form submission
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (originalURL.trim() !== "") {
-      try{
-        const encodedURL = encodeURIComponent(originalURL.trim());
-        
-        //Send to API
-        const response = await fetch('https://proxy.cors.sh/https://cleanuri.com/api/v1/shorten', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: `url=${encodedURL}`, // URL-encoded data
-        });
+      setError("");
+
+      try {
+        let encodedURL;
+
+        try {
+          encodedURL = new URL(originalURL.trim());
+        } catch (error) {
+          throw new Error("Invalid URL format");
+        }
+
+        // Send to API
+        const response = await fetch(
+          "https://api.allorigins.win/get?url=https://cleanuri.com/api/v1/shorten",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `url=${encodedURL}`, // URL-encoded data
+          }
+        );
 
         if (!response.ok) {
           const errorDetails = await response.json();
-          throw new Error('API Error: ' + errorDetails.error);
+          throw new Error("Error: " + errorDetails.error);
         }
-  
+
         // Log the successful response
         const data = await response.json();
-        console.log('API Response:', data);
-
-      } catch (error){
-        console.log(error)
+        setshortenedURLs((originalURL) => [
+          ...originalURL,
+          { original: originalURL, shortened: data.result_url },
+        ]);
+      } catch (error) {
+        setError(error.message);
       }
     } else {
-      console.log("Please enter a URL before submitting!")
+      setError("Please add a link");
     }
-  }
+  };
 
   return (
-    <div className='shortener__container'>
-        <div className='shortener__content'>
-            <input 
-              type="url" 
-              id="link" 
-              name="link" 
-              placeholder="Shorten your link here..." 
+    <>
+      <div className="shortener__container">
+        <div className="shortener__content">
+          <div className="shortener__input">
+            <input
+              type="url"
+              id="link"
+              name="link"
+              placeholder="Shorten your link here..."
               required
-              value={originalURL} 
+              value={originalURL}
               onChange={handleInputChange}
+              className={error ? "shortener__input-error" : "shortener__input"}
             />
-            <Button text="Shorten It!" variant="secondary" onClick={handleSubmit}/>
+            <Button
+              text="Shorten It!"
+              variant="secondary"
+              onClick={handleSubmit}
+            />
+          </div>
+          {error && <p className="shortener__text-error">{error}</p>}
         </div>
-    </div>
-  )
-}
+      </div>
 
-export default Shortener
+      <div>
+        {shortenedURLs.length > 0 && (
+          <ul>
+            {shortenedURLs.map((url, index) => (
+              <li key={index}>
+                <div>
+                  <p>
+                    {url.original}
+                  </p>
+                  {console.log(url.original)}
+                </div>
 
+                <div>
+                  <p>
+                    <a
+                      href={url.shortened}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {url.shortened}
+                    </a>
+                  </p>
+                  {shortenedURLs.length > 0 && <Button text="Copy" variant="secondary" /> }
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default Shortener;
 
 // Set Up State Variables DONE
 // Create a state variable to hold the user's input (original URL). DONE
