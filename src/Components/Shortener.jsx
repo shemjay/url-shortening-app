@@ -4,7 +4,7 @@ import "./Shortener.css";
 
 const Shortener = () => {
   const [originalURL, setOriginalURL] = useState("");
-  const [shortenedURLs, setshortenedURLs] = useState([]);
+  const [shortenedURL, setshortenedURL] = useState("");
   const [error, setError] = useState("");
 
   //Handles user input change
@@ -18,53 +18,33 @@ const Shortener = () => {
 
     if (originalURL.trim() !== "") {
       setError("");
-
       try {
-        let parsedURL;
-        let encodedURL;
+        const encodedURL = encodeURIComponent(originalURL.trim());
 
-        try {
-          parsedURL = new URL(originalURL.trim());
-          encodedURL = encodeURIComponent(parsedURL.href); 
-        } catch (error) {
-          throw new Error("Invalid URL format");
-        }
-
-        console.log(
-          "Sending request with URL:",
-          `url=${encodedURL}`,
-          encodedURL
-        );
-
-        // Send to API
+        //Send to API
         const response = await fetch(
-          `https://api.allorigins.win/get?url=${encodeURIComponent('https://cleanuri.com/api/v1/shorten')}`,
+          "https://proxy.cors.sh/https://cleanuri.com/api/v1/shorten",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: `url=${encodedURL}`, 
+            body: `url=${encodedURL}`, // URL-encoded data
           }
         );
-
         if (!response.ok) {
           const errorDetails = await response.json();
-          throw new Error("Error: " + errorDetails.error);
+          throw new Error("API Error: " + errorDetails.error);
         }
 
         // Log the successful response
         const data = await response.json();
-        console.log("API Response: ", data, data.result_url);
-        setshortenedURLs((currentURL) => [
-          ...currentURL,
-          { original: originalURL, shortened: data.result_url },
-        ]);
+        setshortenedURL(data.result_url);
       } catch (error) {
         setError(error.message);
       }
     } else {
-      setError("Please add a link");
+      setError("Please enter a valid URL");
     }
   };
 
@@ -93,35 +73,18 @@ const Shortener = () => {
         </div>
       </div>
 
-      <div>
-        {shortenedURLs.length > 0 && (
-          <ul>
-            {shortenedURLs.map((url, index) => (
-              <li key={index}>
-                <div>
-                  <p>{url.original}</p>
-                  {/* {console.log(JSON.stringify(url))} */}
-                </div>
 
-                <div>
-                  <p>
-                    <a
-                      href={url.shortened}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {url.shortened}
-                    </a>
-                  </p>
-                  {shortenedURLs.length > 0 && originalURL && (
-                    <Button text="Copy" variant="secondary" />
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
+      <div className="shortener__container-link">
+        {shortenedURL !== "" && (
+          <div className="container-link-content">
+            <a href={shortenedURL} target="_blank" rel="noopener noreferrer">
+              {shortenedURL}
+            </a>
+            <Button text="Copy" variant="secondary" />
+          </div>
         )}
       </div>
+
     </>
   );
 };
