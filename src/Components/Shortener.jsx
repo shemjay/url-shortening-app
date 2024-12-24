@@ -20,23 +20,31 @@ const Shortener = () => {
       setError("");
 
       try {
+        let parsedURL;
         let encodedURL;
 
         try {
-          encodedURL = new URL(originalURL.trim());
+          parsedURL = new URL(originalURL.trim());
+          encodedURL = encodeURIComponent(parsedURL.href); 
         } catch (error) {
           throw new Error("Invalid URL format");
         }
 
+        console.log(
+          "Sending request with URL:",
+          `url=${encodedURL}`,
+          encodedURL
+        );
+
         // Send to API
         const response = await fetch(
-          "https://api.allorigins.win/get?url=https://cleanuri.com/api/v1/shorten",
+          `https://api.allorigins.win/get?url=${encodeURIComponent('https://cleanuri.com/api/v1/shorten')}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: `url=${encodedURL}`, // URL-encoded data
+            body: `url=${encodedURL}`, 
           }
         );
 
@@ -47,8 +55,9 @@ const Shortener = () => {
 
         // Log the successful response
         const data = await response.json();
-        setshortenedURLs((originalURL) => [
-          ...originalURL,
+        console.log("API Response: ", data, data.result_url);
+        setshortenedURLs((currentURL) => [
+          ...currentURL,
           { original: originalURL, shortened: data.result_url },
         ]);
       } catch (error) {
@@ -90,10 +99,8 @@ const Shortener = () => {
             {shortenedURLs.map((url, index) => (
               <li key={index}>
                 <div>
-                  <p>
-                    {url.original}
-                  </p>
-                  {console.log(url.original)}
+                  <p>{url.original}</p>
+                  {/* {console.log(JSON.stringify(url))} */}
                 </div>
 
                 <div>
@@ -106,7 +113,9 @@ const Shortener = () => {
                       {url.shortened}
                     </a>
                   </p>
-                  {shortenedURLs.length > 0 && <Button text="Copy" variant="secondary" /> }
+                  {shortenedURLs.length > 0 && originalURL && (
+                    <Button text="Copy" variant="secondary" />
+                  )}
                 </div>
               </li>
             ))}
@@ -128,19 +137,19 @@ export default Shortener;
 
 // Handle Form Submission
 // Create a function that gets triggered when the user submits the form. DONE
-// Validate the input URL (e.g., check if it’s not empty or malformed).
-// Make an API call to a link-shortening service (e.g., Bitly, TinyURL) with the original URL.
+// Validate the input URL (e.g., check if it’s not empty or malformed). DONE
+// Make an API call to a link-shortening service (e.g., Bitly, TinyURL) with the original URL. DONE
 
-// Process the API Response
-// If the API call is successful, update the shortened link state with the API response.
-// Handle errors by updating the error state and displaying a message to the user.
+// Process the API Response DONE
+// If the API call is successful, update the shortened link state with the API response. DONE
+// Handle errors by updating the error state and displaying a message to the user. DONE
 
 // Render the Component
 // Include:
-// An input field for the user to enter the URL.
-// A button for submission.
-// A display section to show the shortened link (if available).
-// Optionally, show loading or error messages.
+// An input field for the user to enter the URL. DONE
+// A button for submission. DONE
+// A display section to show the shortened link (if available). DONE
+// Optionally, show loading or error messages. 1/2 DONE
 
 // Add Copy-to-Clipboard Functionality (Optional)
 // Include a button or icon next to the shortened link.
