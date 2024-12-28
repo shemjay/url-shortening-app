@@ -4,7 +4,7 @@ import "./Shortener.css";
 
 const Shortener = () => {
   const [originalURL, setOriginalURL] = useState("");
-  const [shortenedURL, setshortenedURL] = useState("");
+  const [shortenedURL, setShortenedURL] = useState([]);
   const [error, setError] = useState("");
 
   //Handles user input change
@@ -39,7 +39,7 @@ const Shortener = () => {
 
         // Log the successful response
         const data = await response.json();
-        setshortenedURL(data.result_url);
+        setShortenedURL((currentURL) => [...currentURL, data.result_url]);
       } catch (error) {
         setError(error.message);
       }
@@ -73,23 +73,35 @@ const Shortener = () => {
         </div>
       </div>
 
+      {shortenedURL.length > 0 && (
+          <ul className="shortener__container-link">
+            {shortenedURL.map((url, index) => {
+              return (
+                <li key={url} className="container-link-content">
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    {url}
+                  </a>
+                  <Button text="Copy" variant="secondary" />
+                </li>
+              );
+            })}
+          </ul>
+        )}
+    </>
+  );
+};
 
-      <div className="shortener__container-link">
-        {shortenedURL !== "" && (
+export default Shortener;
+{
+  /* <div className="shortener__container-link">
           <div className="container-link-content">
             <a href={shortenedURL} target="_blank" rel="noopener noreferrer">
               {shortenedURL}
             </a>
             <Button text="Copy" variant="secondary" />
           </div>
-        )}
-      </div>
-
-    </>
-  );
-};
-
-export default Shortener;
+        </div> */
+}
 
 // Set Up State Variables DONE
 // Create a state variable to hold the user's input (original URL). DONE
