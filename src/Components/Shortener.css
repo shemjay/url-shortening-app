@@ -70,3 +70,17 @@ input[type="url"] {
     border-radius: 0.5em;
 }
 
+.container__link-original {
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+}
+
+.container__link-shortened {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    color: var(--cyan);
+}

@@ -4,7 +4,7 @@ import "./Shortener.css";
 
 const Shortener = () => {
   const [originalURL, setOriginalURL] = useState("");
-  const [shortenedURL, setShortenedURL] = useState([]);
+  const [shortenedURLs, setShortenedURLs] = useState([]);
   const [error, setError] = useState("");
 
   //Handles user input change
@@ -39,7 +39,10 @@ const Shortener = () => {
 
         // Log the successful response
         const data = await response.json();
-        setShortenedURL((currentURL) => [...currentURL, data.result_url]);
+        setShortenedURLs((currentURLs) => [
+          ...currentURLs,
+          { original: originalURL, shortened: data.result_url },
+        ]);
       } catch (error) {
         setError(error.message);
       }
@@ -73,20 +76,41 @@ const Shortener = () => {
         </div>
       </div>
 
-      {shortenedURL.length > 0 && (
-          <ul className="shortener__container-link">
-            {shortenedURL.map((url, index) => {
-              return (
-                <li key={url} className="container-link-content">
-                  <a href={url} target="_blank" rel="noopener noreferrer">
-                    {url}
+      {shortenedURLs.length > 0 && (
+        <ul className="shortener__container-link">
+          {shortenedURLs
+            .filter((url) => url && url.original && url.shortened)
+            .map((url, index) => (
+              <li key={index} className="container-link-content">
+                <div className="container__link-original">
+                  <p>{index + 1}. </p>
+                  <a
+                    href={url.original}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {url.original.length > 30 ? (
+                      <span>{url.original.slice(0, 30)}...</span>
+                    ) : (
+                      <span>{url.original}</span>
+                    )}
+                  </a>
+                </div>
+
+                <div className="container__link-shortened">
+                  <a
+                    href={url.shortened}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {url.shortened}
                   </a>
                   <Button text="Copy" variant="secondary" />
-                </li>
-              );
-            })}
-          </ul>
-        )}
+                </div>
+              </li>
+            ))}
+        </ul>
+      )}
     </>
   );
 };
@@ -95,8 +119,8 @@ export default Shortener;
 {
   /* <div className="shortener__container-link">
           <div className="container-link-content">
-            <a href={shortenedURL} target="_blank" rel="noopener noreferrer">
-              {shortenedURL}
+            <a href={shortenedURLs} target="_blank" rel="noopener noreferrer">
+              {shortenedURLs}
             </a>
             <Button text="Copy" variant="secondary" />
           </div>
