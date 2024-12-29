@@ -6,6 +6,24 @@ const Shortener = () => {
   const [originalURL, setOriginalURL] = useState("");
   const [shortenedURLs, setShortenedURLs] = useState([]);
   const [error, setError] = useState("");
+  const [copyText, setCopyText] = useState({});
+
+  //Handles Buttons copy text and functionality
+  const handleCopy = (id, urlText) => {
+    navigator.clipboard.writeText(urlText);
+    setCopyText((prevState) => ({
+      ...prevState,
+      [id]: true,
+    }));
+
+    const copyTimeout = setTimeout(() => {
+      setCopyText((prevState) => ({
+        ...prevState,
+        [id]: false,
+      }));
+      delete copyTimeout.current[id];
+    }, 3000);
+  };
 
   //Handles user input change
   const handleInputChange = (e) => {
@@ -23,7 +41,7 @@ const Shortener = () => {
 
         //Send to API
         const response = await fetch(
-          "https://proxy.cors.sh/https://cleanuri.com/api/v1/shorten",
+          "https://cors-anywhere.herokuapp.com/https://cleanuri.com/api/v1/shorten",
           {
             method: "POST",
             headers: {
@@ -34,7 +52,7 @@ const Shortener = () => {
         );
         if (!response.ok) {
           const errorDetails = await response.json();
-          throw new Error("API Error: " + errorDetails.error);
+          throw new Error(errorDetails.error);
         }
 
         // Log the successful response
@@ -47,7 +65,7 @@ const Shortener = () => {
         setError(error.message);
       }
     } else {
-      setError("Please enter a valid URL");
+      setError("Please add a link");
     }
   };
 
@@ -56,16 +74,43 @@ const Shortener = () => {
       <div className="shortener__container">
         <div className="shortener__content">
           <div className="shortener__input">
-            <input
-              type="url"
-              id="link"
-              name="link"
-              placeholder="Shorten your link here..."
-              required
-              value={originalURL}
-              onChange={handleInputChange}
-              className={error ? "shortener__input-error" : "shortener__input"}
-            />
+            <label htmlFor="link" className="shortener__label">
+              
+              <input
+                type="url"
+                id="link"
+                name="link"
+                placeholder="Shorten your link here..."
+                required
+                value={originalURL}
+                onChange={handleInputChange}
+                className={
+                  error ? "shortener__input-error" : "shortener__input"
+                }
+              />
+              <a href="#" className="shortener__label-link">
+                <svg
+                  className="close-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  style={{
+                    width: '2em',
+                    height: '2em',
+                    stroke: 'hsl(180, 66%, 49%)', 
+                  }}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </a>
+            </label>
+
             <Button
               text="Shorten It!"
               variant="secondary"
@@ -105,7 +150,21 @@ const Shortener = () => {
                   >
                     {url.shortened}
                   </a>
-                  <Button text="Copy" variant="secondary" />
+                  {shortenedURLs.map((url, index) => (
+                    <div key={index}>
+                      {copyText[url.shortened] ? (
+                        <Button text="Copied!" variant="secondary" />
+                      ) : (
+                        <Button
+                          text="Copy"
+                          variant="secondary"
+                          onClick={() =>
+                            handleCopy(url.shortened, url.shortened)
+                          }
+                        />
+                      )}
+                    </div>
+                  ))}
                 </div>
               </li>
             ))}
@@ -116,16 +175,6 @@ const Shortener = () => {
 };
 
 export default Shortener;
-{
-  /* <div className="shortener__container-link">
-          <div className="container-link-content">
-            <a href={shortenedURLs} target="_blank" rel="noopener noreferrer">
-              {shortenedURLs}
-            </a>
-            <Button text="Copy" variant="secondary" />
-          </div>
-        </div> */
-}
 
 // Set Up State Variables DONE
 // Create a state variable to hold the user's input (original URL). DONE
@@ -148,12 +197,8 @@ export default Shortener;
 // An input field for the user to enter the URL. DONE
 // A button for submission. DONE
 // A display section to show the shortened link (if available). DONE
-// Optionally, show loading or error messages. 1/2 DONE
+// Optionally, show loading or error messages. DONE
 
 // Add Copy-to-Clipboard Functionality (Optional)
 // Include a button or icon next to the shortened link.
 // Implement a function that copies the shortened link to the clipboard when clicked.
-
-// Return the JSX
-// Structure the component layout based on your HTML and CSS.
-// Bind the input, button, and displayed data to the corresponding state variables and functions.

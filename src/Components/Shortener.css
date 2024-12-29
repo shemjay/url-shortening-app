@@ -71,10 +71,13 @@ input[type="url"] {
 }
 
 .container__link-original {
-    color: black;
     display: flex;
     align-items: center;
     gap: 0.2em;
+}
+
+.container__link-original span {
+    color: black;
 }
 
 .container__link-shortened {
@@ -84,3 +87,28 @@ input[type="url"] {
     gap: 0.5em;
     color: var(--cyan);
 }
+
+.container__link-shortened a {
+    color: var(--cyan);
+}
+
+.shortener__label {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.shortener__label-link {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+.close-icon:hover {
+    stroke: red; /* Change color on hover */
+  }
