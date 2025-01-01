@@ -11,23 +11,29 @@ const Shortener = () => {
   //Handles Buttons copy text and functionality
   const handleCopy = (id, urlText) => {
     navigator.clipboard.writeText(urlText);
+    console.log("Copied to clipboard:", urlText);
     setCopyText((prevState) => ({
       ...prevState,
       [id]: true,
     }));
 
-    const copyTimeout = setTimeout(() => {
+    setTimeout(() => {
       setCopyText((prevState) => ({
         ...prevState,
         [id]: false,
       }));
-      delete copyTimeout.current[id];
     }, 3000);
   };
 
   //Handles user input change
   const handleInputChange = (e) => {
     setOriginalURL(e.target.value);
+  };
+
+  //Clear Input Field
+  const clearInput = (e) => {
+    e.preventDefault();
+    setOriginalURL("");
   };
 
   //form submission
@@ -47,7 +53,7 @@ const Shortener = () => {
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: `url=${encodedURL}`, // URL-encoded data
+            body: `url=${encodedURL}`,
           }
         );
         if (!response.ok) {
@@ -75,7 +81,6 @@ const Shortener = () => {
         <div className="shortener__content">
           <div className="shortener__input">
             <label htmlFor="link" className="shortener__label">
-              
               <input
                 type="url"
                 id="link"
@@ -88,7 +93,11 @@ const Shortener = () => {
                   error ? "shortener__input-error" : "shortener__input"
                 }
               />
-              <a href="#" className="shortener__label-link">
+              <a
+                href="#"
+                className="shortener__label-link"
+                onClick={(e) => clearInput(e)}
+              >
                 <svg
                   className="close-icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -97,9 +106,9 @@ const Shortener = () => {
                   strokeWidth={1.5}
                   stroke="currentColor"
                   style={{
-                    width: '2em',
-                    height: '2em',
-                    stroke: 'hsl(180, 66%, 49%)', 
+                    width: "2em",
+                    height: "2em",
+                    stroke: "hsl(180, 66%, 49%)",
                   }}
                 >
                   <path
@@ -127,6 +136,7 @@ const Shortener = () => {
             .filter((url) => url && url.original && url.shortened)
             .map((url, index) => (
               <li key={index} className="container-link-content">
+                {/* Render original URL */}
                 <div className="container__link-original">
                   <p>{index + 1}. </p>
                   <a
@@ -142,6 +152,7 @@ const Shortener = () => {
                   </a>
                 </div>
 
+                {/* Render shortened URL and copy button */}
                 <div className="container__link-shortened">
                   <a
                     href={url.shortened}
@@ -150,26 +161,25 @@ const Shortener = () => {
                   >
                     {url.shortened}
                   </a>
-                  {shortenedURLs.map((url, index) => (
-                    <div key={index}>
-                      {copyText[url.shortened] ? (
-                        <Button text="Copied!" variant="secondary" />
-                      ) : (
-                        <Button
-                          text="Copy"
-                          variant="secondary"
-                          onClick={() =>
-                            handleCopy(url.shortened, url.shortened)
-                          }
-                        />
-                      )}
-                    </div>
-                  ))}
+                  {copyText[url.shortened] ? (
+                    <Button 
+                      text="Copied!" 
+                      variant="confirmed"
+                      className="button__signin.confirmed"
+                    />
+                  ) : (
+                    <Button
+                      text="Copy"
+                      variant="secondary"
+                      onClick={() => handleCopy(url.shortened, url.shortened)}
+                    />
+                  )}
                 </div>
               </li>
             ))}
         </ul>
       )}
+
     </>
   );
 };

@@ -8,6 +8,7 @@
     padding: 5px 20px;
     background-color: var(--cyan);
     transition: 0.3s;
+    border: none;
 }
 
 .button__signin:hover {
@@ -16,9 +17,15 @@
 
 .button__signin.secondary {
     border-radius: 0.5em;
-    padding: 18px 20px;
+    padding: 1em 2em;
 }
 
 .button__signin.tertiary {
     padding: 0.5em 1.5em;
+}
+
+.button__signin.confirmed {
+    border-radius: 0.5em;
+    padding: 1em 2em;
+    background-color: var(--dark-violet);
 }
