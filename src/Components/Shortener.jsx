@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import Spinner from "./Spinner";
 import "./Shortener.css";
 
 const Shortener = () => {
@@ -7,6 +8,7 @@ const Shortener = () => {
   const [shortenedURLs, setShortenedURLs] = useState([]);
   const [error, setError] = useState("");
   const [copyText, setCopyText] = useState({});
+  const [loading, setLoading] = useState(null);
 
   //Handles Buttons copy text and functionality
   const handleCopy = (id, urlText) => {
@@ -39,6 +41,7 @@ const Shortener = () => {
   //form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (originalURL.trim() !== "") {
       setError("");
@@ -69,6 +72,8 @@ const Shortener = () => {
         ]);
       } catch (error) {
         setError(error.message);
+      } finally {
+        setLoading(false)
       }
     } else {
       setError("Please add a link");
@@ -121,9 +126,11 @@ const Shortener = () => {
             </label>
 
             <Button
-              text="Shorten It!"
+              text={loading ? <Spinner variant="button"/> : 'Shorten It!'} Breaks when theres an error
+              //text="Shorten It!"
               variant="secondary"
               onClick={handleSubmit}
+              disabled={loading}
             />
           </div>
           {error && <p className="shortener__text-error">{error}</p>}

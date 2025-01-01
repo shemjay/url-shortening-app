@@ -6,6 +6,7 @@ import Statistics from "./Components/Statistics";
 import Boost from "./Components/Boost";
 import Footer from "./Components/Footer";
 import FadeUpSection from "./Components/FadeTransition";
+import Spinner from "./Components/Spinner";
 import "./Components/Spinner.css";
 
 // API TO USE: https://cleanuri.com/docs it sucks
@@ -26,9 +27,7 @@ function App() {
   return (
     <>
       {isLoading ? (
-        <div className="spinner-container">
-          <div className="spinner"></div>
-        </div>
+        <Spinner />
       ) : (
         <>
           <div className="app__container">

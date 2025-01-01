@@ -15,6 +15,7 @@ const Navbar = () => {
                 <li><a href="#">Features</a></li>
                 <li><a href="#">Pricing</a></li>
                 <li><a href="#">Resources</a></li>
+                <li><a href="https://cors-anywhere.herokuapp.com/corsdemo" target="blank" rel="noopener noreferrer" >Cors</a></li>
             </ul>
         </div>
 
