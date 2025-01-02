@@ -9,7 +9,11 @@
   background-color: var(--dark-violet);
   border-radius: 0.5em;
   padding: 2.5em;
-  width: 65em;
+  width: 65em; 
+  position: absolute;
+  top: 0; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
 }
 
 .shortener__content {
@@ -56,7 +60,7 @@ input[type="url"] {
   justify-content: center;
   flex-direction: column;
   gap: 0.5em;
-  padding: 0;
+  padding: 0; 
 }
 
 .container-link-content {

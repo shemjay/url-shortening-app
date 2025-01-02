@@ -10,7 +10,6 @@ const Shortener = () => {
   const [copyText, setCopyText] = useState({});
   const [loading, setLoading] = useState(null);
 
-  //Handles Buttons copy text and functionality
   const handleCopy = (id, urlText) => {
     navigator.clipboard.writeText(urlText);
     console.log("Copied to clipboard:", urlText);
@@ -126,8 +125,8 @@ const Shortener = () => {
             </label>
 
             <Button
-              text={loading ? <Spinner variant="button"/> : 'Shorten It!'} Breaks when theres an error
-              //text="Shorten It!"
+              text={loading && error === "" ? <Spinner variant="button"/> : 'Shorten It!'} //Breaks when theres an API error
+              //Use this for now text="Shorten It!"
               variant="secondary"
               onClick={handleSubmit}
               disabled={loading}
@@ -143,7 +142,6 @@ const Shortener = () => {
             .filter((url) => url && url.original && url.shortened)
             .map((url, index) => (
               <li key={index} className="container-link-content">
-                {/* Render original URL */}
                 <div className="container__link-original">
                   <p>{index + 1}. </p>
                   <a
@@ -193,29 +191,3 @@ const Shortener = () => {
 
 export default Shortener;
 
-// Set Up State Variables DONE
-// Create a state variable to hold the user's input (original URL). DONE
-// Create a state variable to store the shortened link. DONE
-// Optionally, add a state variable for loading and error messages. DONE
-// Handle Input Change DONE
-// Define a function to update the input state as the user types in the URL input field. DONE
-
-// Handle Form Submission
-// Create a function that gets triggered when the user submits the form. DONE
-// Validate the input URL (e.g., check if it’s not empty or malformed). DONE
-// Make an API call to a link-shortening service (e.g., Bitly, TinyURL) with the original URL. DONE
-
-// Process the API Response DONE
-// If the API call is successful, update the shortened link state with the API response. DONE
-// Handle errors by updating the error state and displaying a message to the user. DONE
-
-// Render the Component
-// Include:
-// An input field for the user to enter the URL. DONE
-// A button for submission. DONE
-// A display section to show the shortened link (if available). DONE
-// Optionally, show loading or error messages. DONE
-
-// Add Copy-to-Clipboard Functionality (Optional)
-// Include a button or icon next to the shortened link.
-// Implement a function that copies the shortened link to the clipboard when clicked.

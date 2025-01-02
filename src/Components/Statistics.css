@@ -11,11 +11,9 @@
 }
 
 .shortener {
-    position: absolute;
-    top: 0; 
-    left: 50%; 
-    transform: translate(-50%, -50%);
-    z-index: 3;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0em 4em;
 }
 
 .statistics__title {
@@ -25,7 +23,8 @@
     justify-content: center;
     flex-direction: column;
     min-width: 100%;
-    padding: 8em 0 2em 0;
+    padding: 6em 0em;
+    text-align: center;
 }
 
 .statistics__title h2 {
@@ -96,14 +95,22 @@
     border-radius: 50%;
 }
 
-.statistics__container-cards .card-2::before {
-    content: "";
+.statistics__card::before {
+    content: '';
     position: absolute;
     top: 50%;
-    left: -1.50em; 
-    width: calc(100% + 100px);
-    height: 0.4rem;
-    background-color: var(--cyan);
+    left: 100%; 
+    width: calc(1.5em + 4px); 
+    height: 0.5rem;
+    background-color: var(--cyan); 
     transform: translateY(-50%);
-    z-index: -2; 
+    z-index: 2;
+}
+
+.card-2::before {
+    width: calc(1.5em + 4px); 
+}
+
+.card-3::before {
+    display: none; 
 }
