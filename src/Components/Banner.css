@@ -14,7 +14,7 @@
     align-items: left;
     justify-content: center;
     flex-direction: column;
-    padding: 8em 0 3em 0;
+    padding: 8em 0 8em 0;
 }
 
 .banner__image {
@@ -46,4 +46,9 @@
     padding: 1em 0;
 }
 
-
+@media (max-width: 768px) {
+    .banner__container {
+        flex-direction: column;
+        padding: 0;
+    }
+  }
