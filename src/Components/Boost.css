@@ -8,11 +8,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
     padding: 3rem 0;
     gap: 1em;
     color: white;
 }
 
 .boost__container h2 {
-    font-size: 35px;
+    font-size: 2em;
+}
+
+@media (max-width: 768px) {
+    .boost__container h2 {
+        font-size: 1.5em;
+    }
 }

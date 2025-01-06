@@ -4,6 +4,7 @@
     justify-content: left;  
     position: relative;
     color: var(--very-dark-blue);
+    border: 2px solid red;
 }
 
 .banner__content {
@@ -15,6 +16,7 @@
     justify-content: center;
     flex-direction: column;
     padding: 8em 0 8em 0;
+    border: 3px solid green;
 }
 
 .banner__image {
@@ -48,7 +50,22 @@
 
 @media (max-width: 768px) {
     .banner__container {
-        flex-direction: column;
-        padding: 0;
+        flex-direction: column; 
+        align-items: center;
+        padding: 2em 0;
     }
-  }
+
+    .banner__image {
+        position: relative;     
+        max-width: 100%;        
+        transform: translateY(0); 
+        right: -20%;               
+        margin-bottom: 2em;     
+      }
+
+    .banner__content {
+        display: flex;
+        justify-content: center; /* THISS ISSSNT CENTERINGGG  ARGHHHHHHHHHHHH*/
+        align-items: center; 
+      }
+}

@@ -125,8 +125,7 @@ const Shortener = () => {
             </label>
 
             <Button
-              text={loading && error === "" ? <Spinner variant="button"/> : 'Shorten It!'} //Breaks when theres an API error
-              //Use this for now text="Shorten It!"
+              text={loading && error === "" ? <Spinner variant="button"/> : 'Shorten It!'} 
               variant="secondary"
               onClick={handleSubmit}
               disabled={loading}
@@ -157,7 +156,6 @@ const Shortener = () => {
                   </a>
                 </div>
 
-                {/* Render shortened URL and copy button */}
                 <div className="container__link-shortened">
                   <a
                     href={url.shortened}

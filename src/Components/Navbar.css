@@ -34,7 +34,6 @@
   background-color: var(--dark-violet);
   border-radius: 0.5rem;
   z-index: 999;
-  border: 2px solid black;
   gap: 0.5rem;
   padding: 0.5rem 0.5rem;
   transition: opacity 0.3s ease, transform 0.3s ease;

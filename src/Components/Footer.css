@@ -2,7 +2,6 @@
     background-color: var(--very-dark-violet);
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; 
-     
     padding: 4em 6em;
     color: white;
 }
@@ -50,4 +49,47 @@
 
 .footer__socials g:hover {
     color: var(--cyan);
+}
+
+@media (max-width: 1024px) {
+    .footer {
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto auto auto; 
+        padding: 2em; 
+        gap: 4em;
+    }
+
+    .footer__links {
+        grid-template-columns: 1fr 1fr; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer__logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer__socials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        grid-template-columns: 1fr; 
+    }
+
+    .footer__links {
+        grid-template-columns: 1fr; 
+        gap: 1em; 
+    }
+
+    .footer__socials {
+        justify-content: center; 
+    }
 }

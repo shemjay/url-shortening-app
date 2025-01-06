@@ -29,3 +29,9 @@
     padding: 1em 2em;
     background-color: var(--dark-violet);
 }
+
+@media (max-width: 768px) {
+    .button__signin.secondary  {
+        width: 100%;
+    }
+}

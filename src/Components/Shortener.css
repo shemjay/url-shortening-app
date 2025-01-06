@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   background-color: var(--dark-violet);
   border-radius: 0.5em;
+  max-width: 100%;
   width: 100%; 
   position: absolute;
   top: 0; 
@@ -117,6 +118,50 @@ input[type="url"] {
   display: flex;
   align-items: center;
 }
-.close-icon:hover {
-  stroke: red; /* Change color on hover */
+
+@media (max-width: 768px) {
+  .shortener__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 2em;
+  }
+
+  .shortener__text-error {
+    text-align: center;
+    margin: 1em 0em 0em 0em;
+  }
+
+  .shortener__input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .container-link-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    border: 2px solid green;
+  }
+
+  .container__link-shortened {
+    text-align: left;
+    
+    flex-direction: column;
+    width: 100%;
+    border: 2px solid yellow;
+    padding: 0.5em;
+    justify-content: left;
+  }
+
+  .container__link-original {
+    border: 2px solid red;
+    width: 100%;
+    padding: 0.5em;
+  }
+  
 }
