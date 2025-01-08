@@ -36,6 +36,12 @@ body, html {
   overflow-x: hidden;
 }
 
+@media (max-width: 1024px) {
+  .app__container {
+    padding: 1.5em 1.5em;
+  }
+}
+
 @media (max-width: 768px) {
   .app__container {
     padding: 1em 1em;

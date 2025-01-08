@@ -21,7 +21,7 @@ const Statistics = ({transitionTime}) => {
         </p>
       </div>
 
-      <div className="statistics__container-cards">
+      <div className="statistics__container-cards card-1">
         <FadeUpSection transitionTime={1}>
           <div className="statistics__card">
             <div className="statistics__card-image">

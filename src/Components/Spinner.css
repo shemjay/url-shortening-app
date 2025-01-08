@@ -17,6 +17,10 @@
 
 .spinner-container.button {
   background-color: hsl(180, 66%, 49%, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   width: 3em;
   height: 3em;
   border: none;

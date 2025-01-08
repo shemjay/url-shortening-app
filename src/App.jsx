@@ -31,9 +31,7 @@ function App() {
       ) : (
         <>
           <div className="app__container">
-            <FadeUpSection>
               <Navbar />
-            </FadeUpSection>
             <FadeUpSection>
               <Banner />
             </FadeUpSection>

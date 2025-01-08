@@ -28,20 +28,21 @@ const Navbar = () => {
             <li>
               <a href="#">Resources</a>
             </li>
-            <li>
+            <li >
               <a
+                style={{color: "hsl(0, 87%, 67%", textDecoration: "underline", fontSize: "0.7rem"}}
                 href="https://cors-anywhere.herokuapp.com/corsdemo"
                 target="blank"
                 rel="noopener noreferrer"
               >
-                Cors
+                Get Access Here Then Refresh
               </a>
             </li>
           </ul>
           <hr className="nav__menu-underline"></hr>
           <div className="nav__buttons">
             <button className="nav__buttons nav__login">Login</button>
-            <Button text="Sign Up" />
+            <Button text="Sign Up" variant="navbar"/>
           </div>
         </div>
 

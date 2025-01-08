@@ -1,37 +1,52 @@
 .button__signin {
-    background: none;
-    cursor: pointer;
-    color: white;
-    font-weight: var(--font-weight-bold);
-    border: 1px solid var(--cyan);
-    border-radius: 999em;
-    padding: 5px 20px;
-    background-color: var(--cyan);
-    transition: 0.3s;
-    border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-weight: var(--font-weight-bold);
+  border: 1px solid var(--cyan);
+  border-radius: 999em;
+  padding: 5px 20px;
+  background-color: var(--cyan);
+  transition: 0.3s;
+  border: none;
 }
 
 .button__signin:hover {
-    background-color: hsl(180, 66%, 49%, 0.5);
+  background-color: hsl(180, 66%, 49%, 0.5);
 }
 
 .button__signin.secondary {
-    border-radius: 0.5em;
-    padding: 1em 2em;
+  border-radius: 0.5em;
+  padding: 1em 2em;
 }
 
 .button__signin.tertiary {
-    padding: 0.5em 1.5em;
+  padding: 0.5em 1.5em;
 }
 
 .button__signin.confirmed {
-    border-radius: 0.5em;
-    padding: 1em 2em;
-    background-color: var(--dark-violet);
+  border-radius: 0.5em;
+  padding: 1em 2em;
+  background-color: var(--dark-violet);
+}
+
+@media (max-width: 1024px) {
+  .button__signin.tertiary {
+    align-self: center;
+  }
+  .button__signin.navbar {
+    align-self: stretch;
+  }
 }
 
 @media (max-width: 768px) {
-    .button__signin.secondary  {
-        width: 100%;
-    }
+  .button__signin.secondary {
+    width: 100%;
+  }
+  .button__signin.confirmed {
+    width: 100%;
+  }
+  .button__signin.tertiary {
+    align-self: center;
+  }
 }

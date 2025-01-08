@@ -33,7 +33,7 @@
   transform: translate(-50%, 10%);
   background-color: var(--dark-violet);
   border-radius: 0.5rem;
-  z-index: 999;
+  z-index: 9;
   gap: 0.5rem;
   padding: 0.5rem 0.5rem;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -68,6 +68,7 @@
 .nav__buttons {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: none;
   border: none;
   cursor: pointer;

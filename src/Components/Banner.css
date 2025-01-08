@@ -1,71 +1,94 @@
 .banner__container {
-    display: flex;
-    align-items: center;
-    justify-content: left;  
-    position: relative;
-    color: var(--very-dark-blue);
-    border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+  color: var(--very-dark-blue);
 }
 
 .banner__content {
-    width: 100%;
-    z-index: 2;
-    margin-top: 4em;
-    display: flex;
-    align-items: left;
-    justify-content: center;
-    flex-direction: column;
-    padding: 8em 0 8em 0;
-    border: 3px solid green;
+  width: 100%;
+  margin-top: 4em;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+  padding: 8em 0 8em 0;
 }
 
 .banner__image {
-    max-width: 60rem;
-    position: absolute;
-    top: 50%; 
-    right: -20%;  
-    z-index: 1;
-    transform: translateY(-50%);
+  max-width: 60rem;
+  position: absolute;
+  top: 50%;
+  right: -20%;
+  transform: translateY(-50%);
 }
 
 .banner__image img {
-    height: auto; 
-    object-fit: cover;
+  height: auto;
+  object-fit: cover;
 }
 
 .banner__content button {
-    align-self: flex-start; 
-    width: auto;
+  align-self: flex-start;
+  width: auto;
 }
 
 .banner__content h1 {
-    font-size: 4rem;
-    line-height: 1.2;
+  font-size: 4rem;
+  line-height: 1.2;
 }
 
 .banner__content p {
-    color: var(--grayish-violet);
-    padding: 1em 0;
+  color: var(--grayish-violet);
+  padding: 1em 0;
+}
+
+@media (max-width: 1024px) {
+  .banner__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2em;
+  }
+
+  .banner__image {
+    position: relative;
+    width: 50rem;
+    transform: translateY(0);
+    right: -10%;
+  }
+
+  .banner__image img {
+    width: 100%; 
+    height: auto;
+    object-fit: cover;
+  }
+
+  .banner__content {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0;
+    padding-bottom: 6em;
+  }
+
+  .banner__content h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .banner__content p {
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {
-    .banner__container {
-        flex-direction: column; 
-        align-items: center;
-        padding: 2em 0;
-    }
-
     .banner__image {
-        position: relative;     
-        max-width: 100%;        
-        transform: translateY(0); 
-        right: -20%;               
-        margin-bottom: 2em;     
-      }
-
-    .banner__content {
-        display: flex;
-        justify-content: center; /* THISS ISSSNT CENTERINGGG  ARGHHHHHHHHHHHH*/
-        align-items: center; 
+        position: relative;
+        max-width: 100%;
+        transform: translateY(0);
+        right: -10%;
       }
 }

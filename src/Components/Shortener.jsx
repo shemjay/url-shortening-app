@@ -72,7 +72,7 @@ const Shortener = () => {
       } catch (error) {
         setError(error.message);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     } else {
       setError("Please add a link");
@@ -125,7 +125,13 @@ const Shortener = () => {
             </label>
 
             <Button
-              text={loading && error === "" ? <Spinner variant="button"/> : 'Shorten It!'} 
+              text={
+                loading && error === "" ? (
+                  <Spinner variant="button" />
+                ) : (
+                  "Shorten It!"
+                )
+              }
               variant="secondary"
               onClick={handleSubmit}
               disabled={loading}
@@ -165,8 +171,8 @@ const Shortener = () => {
                     {url.shortened}
                   </a>
                   {copyText[url.shortened] ? (
-                    <Button 
-                      text="Copied!" 
+                    <Button
+                      text="Copied!"
                       variant="confirmed"
                       className="button__signin.confirmed"
                     />
@@ -182,10 +188,8 @@ const Shortener = () => {
             ))}
         </ul>
       )}
-
     </>
   );
 };
 
 export default Shortener;
-

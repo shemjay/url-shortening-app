@@ -23,7 +23,7 @@
   justify-content: center;
   flex-direction: column;
   min-width: 100%;
-  padding: 6em 0em;
+  padding: 4em 0em;
   text-align: center;
 }
 
@@ -42,7 +42,6 @@
   padding: 4em 6em;
   position: relative;
   background-color: var(--gray);
-  min-height: 20em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -113,4 +112,35 @@
 
 .card-3::before {
   display: none;
+}
+
+@media (max-width: 1024px) {
+  .statistics__container-cards {
+    padding: 3em 2em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3em;
+    /* overflow: hidden; */
+  }
+
+  .statistics__card-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+
+  .statistics__card::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .statistics__container-cards {
+    padding: 1em 1em;
+    display: flex;
+    flex-direction: column;
+  }
 }
